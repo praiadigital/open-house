@@ -1,35 +1,69 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Open House — Portas abertas de imóveis no litoral | Praia Digital</title>
-<meta name="description" content="Agenda de open houses e visitas guiadas de imóveis no litoral paulista. Reserve sua visita e conte quantas visitas faltam para fechar negócio.">
-<link rel="canonical" href="https://praia.digital/open-house/">
-<style>:root{--azul:#0a2540;--mar:#0e7490;--areia:#f8f5ef}*{margin:0;box-sizing:border-box;font-family:system-ui,sans-serif}body{background:var(--areia);color:#1e293b}header{background:linear-gradient(135deg,var(--azul),var(--mar));color:#fff;padding:2.5rem 1.5rem;text-align:center}.badge{display:inline-block;background:rgba(255,255,255,.15);padding:.25rem .8rem;border-radius:999px;font-size:.8rem;margin-bottom:.8rem}main{max-width:760px;margin:2rem auto;padding:0 1.25rem}.card{background:#fff;border-radius:1rem;padding:1.75rem;box-shadow:0 4px 24px rgba(10,37,64,.08);margin-bottom:1.5rem}.ev{display:flex;gap:1rem;align-items:center;background:var(--areia);border-radius:.8rem;padding:1rem;margin-bottom:.7rem}.data{background:var(--azul);color:#fff;border-radius:.7rem;padding:.6rem .8rem;text-align:center;min-width:60px}.data b{display:block;font-size:1.3rem}.ev .info{flex:1}.ev small{color:#64748b}.rsvp{background:var(--mar);color:#fff;border:0;border-radius:.5rem;padding:.5rem .9rem;font-weight:700;cursor:pointer}.rsvp.ok{background:#16a34a}label{display:block;font-weight:600;margin:1rem 0 .35rem}input{width:100%;padding:.7rem;border:1px solid #cbd5e1;border-radius:.5rem;font-size:1rem}button.calc{width:100%;margin-top:1.2rem;background:var(--azul);color:#fff;border:0;padding:.85rem;font-weight:700;border-radius:.6rem;cursor:pointer}.res{background:var(--areia);border-radius:.6rem;padding:1rem;margin-top:1rem;display:none}.rede{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.75rem}.rede a{background:#fff;border:1px solid #e2e8f0;border-radius:.6rem;padding:.8rem;text-decoration:none;color:var(--azul);font-weight:600;font-size:.9rem}footer{text-align:center;padding:2rem;color:#64748b;font-size:.85rem}footer a{color:var(--mar)}</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open House Planner | Praia Digital</title>
+<meta name="description" content="Planeje um open house de sucesso no litoral: checklist, orçamento e script de captação de leads. Satélite de praia.digital.">
+<style>
+body{font-family:system-ui,-apple-system,sans-serif;margin:0;background:#f8fafc;color:#0f172a;line-height:1.6}
+.hero{background:linear-gradient(135deg,#7c2d12,#f97316);color:#fff;padding:50px 20px;text-align:center}
+.container{max-width:1000px;margin:0 auto;padding:30px 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.cta{display:inline-block;background:#fff;color:#0c4a6e;padding:10px 22px;border-radius:8px;text-decoration:none;font-weight:700;margin:6px}
+button{background:#0284c7;color:#fff;border:none;padding:10px 18px;border-radius:8px;font-weight:700;cursor:pointer}
+input,select,textarea{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:8px;margin:6px 0;font-family:inherit}
+footer{text-align:center;padding:24px;color:#64748b;font-size:.9em}
+.bar{height:14px;border-radius:7px;background:linear-gradient(90deg,#0ea5e9,#0369a1)}
+</style>
 </head>
 <body>
-<header><span class="badge">🛰️ App satélite de <a href="https://praia.digital" style="color:#fff">praia.digital</a></span><h1>🚪 Open House</h1><p>Portas abertas no litoral — visite antes de decidir</p></header>
-<main>
-<div class="card"><h3 style="margin-bottom:1rem">📅 Próximos open houses</h3><div id="evs"></div></div>
-<div class="card"><h3>🎯 Quantas visitas até fechar negócio?</h3>
-<label>Imóveis que você pretende visitar</label><input id="n" type="number" value="12" min="1">
-<label>Seu nível de exigência</label><select id="e" style="width:100%;padding:.7rem;border:1px solid #cbd5e1;border-radius:.5rem"><option value="0.25">Flexível — quero fechar rápido</option><option value="0.12" selected>Normal</option><option value="0.06">Exigente — o imóvel perfeito</option></select>
-<button class="calc" onclick="calc()">Estimar jornada</button><div class="res" id="res"></div></div>
-<h2 style="margin:1.5rem 0 .8rem">🌐 Rede Praia Digital</h2>
-<div class="rede">
-<a href="https://praia.digital">🏠 Portal Praia Digital</a>
-<a href="https://praia.digital/checklists-litoral">✅ Checklist de Vistoria</a>
-<a href="https://praia.digital/imobiliarias-parceiras">🤝 Imobiliárias Parceiras</a>
-<a href="https://praia.digital/tour-360">🎥 Tour 360</a>
-<a href="https://praia.digital/apps">🛰️ Todos os apps</a>
+<nav style="background:#0c4a6e;padding:12px 20px;display:flex;gap:14px;flex-wrap:wrap;font-family:system-ui,sans-serif">
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praia.digital/">🌊 Praia Digital</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/apps/">Hub</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/hermes-agents/">Hermes Agents</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/area-anfitriao/">Anfitrião</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/simulador-roi/">ROI</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/simulador-credito/">Crédito</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/guia-litoral/">Guia</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/calculadoras/">Calculadoras</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/radar-precos/">Radar</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/mapa-investidor/">Mapa</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/concierge-ia/">Concierge IA</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/checklist-anfitriao/">Checklist</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/termometro-mercado/">Termômetro</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/alerta-ofertas/">Ofertas</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/gerador-anuncio/">Anúncios</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/quiz-praia-ideal/">Quiz</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/precificador-temporada/">Precificador</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/tour-360/">Tour 360</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/fluxo-caixa/">Fluxo de Caixa</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/decor-praia/">Decor Praia</a>
+<a style="color:#e0f2fe;text-decoration:none;font-weight:600" href="https://praiadigital.github.io/open-house/">Open House</a>
+</nav>
+<div class="hero"><h1>🏡 Open House Planner</h1><p>Transforme visitas em propostas: planeje o evento, estime custos e capte leads como um pro.</p></div>
+<div class="container"><div class="grid">
+<div class="card"><h3>1️⃣ Seu evento</h3>
+<label>Tipo de imóvel</label><select id="tipo"><option>Apartamento na praia</option><option>Casa em condomínio</option><option>Lançamento / planta</option></select>
+<label>Visitantes esperados</label><input id="visitas" type="number" value="30">
+<label>Orçamento de marketing (R$)</label><input id="marketing" type="number" value="600">
+<label>Taxa de conversão esperada</label><select id="conv"><option value="0.1">10% (padrão)</option><option value="0.2" selected>20% (com follow-up)</option><option value="0.3">30% (evento premium)</option></select>
+<button onclick="calc()">📋 Gerar plano</button></div>
+<div class="card"><h3>2️⃣ Projeção</h3><div id="saida"></div></div>
 </div>
-</main>
-<footer>Feito com 🌊 pela rede <a href="https://praia.digital">Praia Digital</a> · <a href="https://github.com/praiadigital/open-house">código aberto no GitHub</a></footer>
+<div class="card"><h3>🗓️ Checklist do dia</h3><ul><li>Placas na rua + balões na entrada (2h antes)</li><li>Imóvel impecável — ver <a href="https://praiadigital.github.io/checklist-anfitriao/">Checklist</a></li><li>Ficha de captação digital no celular/tablet</li><li>Café, água e cheiro de café fresco ☕</li><li>Follow-up em até 24h com o <a href="https://praiadigital.github.io/concierge-ia/">Concierge IA</a></li></ul></div>
+<div class="card"><h3>📈 Potencialize</h3><p>Divulgue o imóvel com o <a href="https://praiadigital.github.io/gerador-anuncio/">Gerador de Anúncios</a> e valide o preço no <a href="https://praiadigital.github.io/radar-precos/">Radar de Preços</a>.</p></div>
+</div>
 <script>
-const E=[['26','SET','Apto 2Q frente-mar Enseada','Guarujá · R$ 720 mil · 10h–16h'],['27','SET','Casa condomínio Riviera Mód. 12','Bertioga · R$ 1,9 mi · 11h–17h'],['03','OUT','Cobertura Gonzaga com vista','Santos · R$ 1,4 mi · 10h–14h'],['04','OUT','Studio Maresias pé na areia','São Sebastião · R$ 480 mil · 9h–15h'],['10','OUT','Casa 4Q Itaguá com piscina','Ubatuba · R$ 890 mil · 10h–16h']];
-evs.innerHTML=E.map((e,i)=>`<div class="ev"><div class="data"><b>${e[0]}</b>${e[1]}</div><div class="info"><b>${e[2]}</b><br><small>${e[3]}</small></div><button class="rsvp" onclick="this.classList.add('ok');this.textContent='✅ Vou!'">RSVP</button></div>`).join('');
-function calc(){const n=+n_?.value} 
-function calc(){const q=+document.getElementById('n').value||10,p=+e.value;
-res.style.display='block';res.innerHTML=`Com ${q} visitas e seu perfil, a chance de fechar negócio é de <b>${Math.min(99,Math.round(q*p*100))}%</b>.<br><small>Média do mercado: compradores visitam 8–15 imóveis antes de decidir. Em open houses você visita 3x mais por dia. Leve o <a href="https://praia.digital/checklists-litoral">Checklist de Vistoria</a> em cada visita!</small>`}
+const fmt=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+function calc(){
+const t=document.getElementById('tipo').value,v=+document.getElementById('visitas').value||0,m=+document.getElementById('marketing').value||0,c=+document.getElementById('conv').value;
+const custoEvt=m+400;
+const leads=Math.round(v*c), custoLead=leads>0?custoEvt/leads:Infinity;
+document.getElementById('saida').innerHTML=`<p><strong>${t}</strong> · ${v} visitantes esperados</p><p>💰 Custo total estimado: <strong>${fmt(custoEvt)}</strong> (marketing + recepção)</p><p style="font-size:1.4em;font-weight:800;color:#ea580c">🎯 ${leads} leads qualificados</p><p>Custo por lead: <strong>${leads?fmt(custoLead):'—'}</strong></p><p style="color:#64748b">Meta: 1 proposta a cada ~10 leads qualificados.</p>`;}
+calc();
 </script>
-</body></html>
+<footer>© Praia Digital — 2026 — Satélite da rede <a href="https://praia.digital">praia.digital</a> · <a href="https://praiadigital.github.io/apps/">Ver todos os apps</a></footer>
+</body>
+</html>
