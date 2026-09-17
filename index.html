@@ -1,45 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Open House Litoral — visitas e lançamentos do fim de semana</title>
-<meta name="description" content="Agenda de open houses e lançamentos imobiliários no litoral paulista. Satélite da rede praia.digital">
-<style>
-body{margin:0;font-family:system-ui,sans-serif;background:#fdf2f8;color:#500724;min-height:100vh}
-header{padding:24px;text-align:center;background:linear-gradient(120deg,#be185d,#ec4899);color:#fff}
-nav a{color:#fbcfe8;margin:0 8px;text-decoration:none;font-size:14px}
-.wrap{max-width:720px;margin:auto;padding:24px}
-.filtros{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;justify-content:center}
-.filtros button{background:#fff;border:2px solid #f9a8d4;color:#be185d;border-radius:99px;padding:8px 16px;cursor:pointer;font-weight:600}
-.filtros button.on{background:#be185d;color:#fff}
-.ev{background:#fff;border-radius:16px;padding:18px;margin-bottom:14px;box-shadow:0 6px 18px rgba(190,24,93,.1);display:flex;gap:16px}
-.ev .data{background:#fdf2f8;border-radius:12px;padding:10px 14px;text-align:center;min-width:60px}
-.ev .data b{display:block;font-size:24px;color:#be185d}
-.ev h3{margin-bottom:4px}
-.tagc{display:inline-block;background:#fce7f3;color:#be185d;border-radius:99px;padding:2px 10px;font-size:12px;margin-right:6px}
-footer{padding:20px;text-align:center;font-size:13px}
-footer a{color:#be185d}
-</style></head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open House — Portas abertas de imóveis no litoral | Praia Digital</title>
+<meta name="description" content="Agenda de open houses e visitas guiadas de imóveis no litoral paulista. Reserve sua visita e conte quantas visitas faltam para fechar negócio.">
+<link rel="canonical" href="https://praia.digital/open-house/">
+<style>:root{--azul:#0a2540;--mar:#0e7490;--areia:#f8f5ef}*{margin:0;box-sizing:border-box;font-family:system-ui,sans-serif}body{background:var(--areia);color:#1e293b}header{background:linear-gradient(135deg,var(--azul),var(--mar));color:#fff;padding:2.5rem 1.5rem;text-align:center}.badge{display:inline-block;background:rgba(255,255,255,.15);padding:.25rem .8rem;border-radius:999px;font-size:.8rem;margin-bottom:.8rem}main{max-width:760px;margin:2rem auto;padding:0 1.25rem}.card{background:#fff;border-radius:1rem;padding:1.75rem;box-shadow:0 4px 24px rgba(10,37,64,.08);margin-bottom:1.5rem}.ev{display:flex;gap:1rem;align-items:center;background:var(--areia);border-radius:.8rem;padding:1rem;margin-bottom:.7rem}.data{background:var(--azul);color:#fff;border-radius:.7rem;padding:.6rem .8rem;text-align:center;min-width:60px}.data b{display:block;font-size:1.3rem}.ev .info{flex:1}.ev small{color:#64748b}.rsvp{background:var(--mar);color:#fff;border:0;border-radius:.5rem;padding:.5rem .9rem;font-weight:700;cursor:pointer}.rsvp.ok{background:#16a34a}label{display:block;font-weight:600;margin:1rem 0 .35rem}input{width:100%;padding:.7rem;border:1px solid #cbd5e1;border-radius:.5rem;font-size:1rem}button.calc{width:100%;margin-top:1.2rem;background:var(--azul);color:#fff;border:0;padding:.85rem;font-weight:700;border-radius:.6rem;cursor:pointer}.res{background:var(--areia);border-radius:.6rem;padding:1rem;margin-top:1rem;display:none}.rede{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.75rem}.rede a{background:#fff;border:1px solid #e2e8f0;border-radius:.6rem;padding:.8rem;text-decoration:none;color:var(--azul);font-weight:600;font-size:.9rem}footer{text-align:center;padding:2rem;color:#64748b;font-size:.85rem}footer a{color:var(--mar)}</style>
+</head>
 <body>
-<header><h1>🚪 Open House Litoral</h1><p>Visitas e lançamentos deste fim de semana no litoral</p>
-<nav><a href="https://praia.digital">Praia Digital</a><a href="https://praia.digital/eventos-litoral">Eventos</a><a href="https://praia.digital/alerta-ofertas">Alerta de Ofertas</a><a href="https://praia.digital/apps">Todos os apps</a></nav></header>
-<div class="wrap">
-<div class="filtros" id="f"></div><div id="lista"></div>
-<p style="text-align:center;color:#9d174d">Quer anunciar seu open house? Fale no <a href="https://praia.digital/portal-corretores">Portal do Corretor</a>.</p>
+<header><span class="badge">🛰️ App satélite de <a href="https://praia.digital" style="color:#fff">praia.digital</a></span><h1>🚪 Open House</h1><p>Portas abertas no litoral — visite antes de decidir</p></header>
+<main>
+<div class="card"><h3 style="margin-bottom:1rem">📅 Próximos open houses</h3><div id="evs"></div></div>
+<div class="card"><h3>🎯 Quantas visitas até fechar negócio?</h3>
+<label>Imóveis que você pretende visitar</label><input id="n" type="number" value="12" min="1">
+<label>Seu nível de exigência</label><select id="e" style="width:100%;padding:.7rem;border:1px solid #cbd5e1;border-radius:.5rem"><option value="0.25">Flexível — quero fechar rápido</option><option value="0.12" selected>Normal</option><option value="0.06">Exigente — o imóvel perfeito</option></select>
+<button class="calc" onclick="calc()">Estimar jornada</button><div class="res" id="res"></div></div>
+<h2 style="margin:1.5rem 0 .8rem">🌐 Rede Praia Digital</h2>
+<div class="rede">
+<a href="https://praia.digital">🏠 Portal Praia Digital</a>
+<a href="https://praia.digital/checklists-litoral">✅ Checklist de Vistoria</a>
+<a href="https://praia.digital/imobiliarias-parceiras">🤝 Imobiliárias Parceiras</a>
+<a href="https://praia.digital/tour-360">🎥 Tour 360</a>
+<a href="https://praia.digital/apps">🛰️ Todos os apps</a>
 </div>
-<footer>Rede <a href="https://praia.digital">praia.digital</a> · <a href="https://praia.digital/match-praia">Match Praia</a> · <a href="https://praia.digital/mapa-inteligente">Mapa Inteligente</a> · <a href="https://praia.digital/tour-360">Tour 360</a></footer>
+</main>
+<footer>Feito com 🌊 pela rede <a href="https://praia.digital">Praia Digital</a> · <a href="https://github.com/praiadigital/open-house">código aberto no GitHub</a></footer>
 <script>
-const eventos=[
-{d:'19',ds:'SÁB',t:'Open House — Cobertura vista mar',l:'Boqueirão, Santos',h:'10h–16h',tipo:'visita',p:'R$ 1,65 mi'},
-{d:'19',ds:'SÁB',t:'Lançamento Residencial Farol',l:'Canto do Forte, Praia Grande',h:'9h–18h',tipo:'lancamento',p:'a partir de R$ 289 mil'},
-{d:'20',ds:'DOM',t:'Open House — Casa 4 suítes com piscina',l:'Riviera, São Sebastião',h:'11h–15h',tipo:'visita',p:'R$ 2,4 mi'},
-{d:'20',ds:'DOM',t:'Feirão de imóveis de temporada',l:'Pitangueiras, Guarujá',h:'10h–17h',tipo:'feirao',p:'vários'},
-{d:'26',ds:'SÁB',t:'Open House — Studio mobiliado',l:'Enseada, Guarujá',h:'10h–14h',tipo:'visita',p:'R$ 420 mil'},
-{d:'27',ds:'DOM',t:'Lançamento condomínio clube',l:'Martim de Sá, Caraguatatuba',h:'9h–17h',tipo:'lancamento',p:'a partir de R$ 380 mil'}];
-const tipos=[['todos','Todos'],['visita','🚪 Visitas'],['lancamento','🚀 Lançamentos'],['feirao','🎪 Feirões']];
-let filtro='todos';
-f.innerHTML=tipos.map(t=>`<button class="${t[0]==='todos'?'on':''}" data-k="${t[0]}">${t[1]}</button>`).join('');
-f.querySelectorAll('button').forEach(b=>b.onclick=()=>{filtro=b.dataset.k;f.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));draw();});
-function draw(){lista.innerHTML=eventos.filter(e=>filtro==='todos'||e.tipo===filtro).map(e=>`<div class="ev"><div class="data"><b>${e.d}</b>${e.ds}<br>SET</div><div><h3>${e.t}</h3><span class="tagc">📍 ${e.l}</span><span class="tagc">🕐 ${e.h}</span><span class="tagc">💰 ${e.p}</span><br><small><a style="color:#be185d" href="https://praia.digital/tour-360">Ver tour virtual antes da visita →</a></small></div></div>`).join('');}
-draw();
-</script></body></html>
+const E=[['26','SET','Apto 2Q frente-mar Enseada','Guarujá · R$ 720 mil · 10h–16h'],['27','SET','Casa condomínio Riviera Mód. 12','Bertioga · R$ 1,9 mi · 11h–17h'],['03','OUT','Cobertura Gonzaga com vista','Santos · R$ 1,4 mi · 10h–14h'],['04','OUT','Studio Maresias pé na areia','São Sebastião · R$ 480 mil · 9h–15h'],['10','OUT','Casa 4Q Itaguá com piscina','Ubatuba · R$ 890 mil · 10h–16h']];
+evs.innerHTML=E.map((e,i)=>`<div class="ev"><div class="data"><b>${e[0]}</b>${e[1]}</div><div class="info"><b>${e[2]}</b><br><small>${e[3]}</small></div><button class="rsvp" onclick="this.classList.add('ok');this.textContent='✅ Vou!'">RSVP</button></div>`).join('');
+function calc(){const n=+n_?.value} 
+function calc(){const q=+document.getElementById('n').value||10,p=+e.value;
+res.style.display='block';res.innerHTML=`Com ${q} visitas e seu perfil, a chance de fechar negócio é de <b>${Math.min(99,Math.round(q*p*100))}%</b>.<br><small>Média do mercado: compradores visitam 8–15 imóveis antes de decidir. Em open houses você visita 3x mais por dia. Leve o <a href="https://praia.digital/checklists-litoral">Checklist de Vistoria</a> em cada visita!</small>`}
+</script>
+</body></html>
