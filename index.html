@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Open House Litoral — visitas e lançamentos do fim de semana</title>
+<meta name="description" content="Agenda de open houses e lançamentos imobiliários no litoral paulista. Satélite da rede praia.digital">
+<style>
+body{margin:0;font-family:system-ui,sans-serif;background:#fdf2f8;color:#500724;min-height:100vh}
+header{padding:24px;text-align:center;background:linear-gradient(120deg,#be185d,#ec4899);color:#fff}
+nav a{color:#fbcfe8;margin:0 8px;text-decoration:none;font-size:14px}
+.wrap{max-width:720px;margin:auto;padding:24px}
+.filtros{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;justify-content:center}
+.filtros button{background:#fff;border:2px solid #f9a8d4;color:#be185d;border-radius:99px;padding:8px 16px;cursor:pointer;font-weight:600}
+.filtros button.on{background:#be185d;color:#fff}
+.ev{background:#fff;border-radius:16px;padding:18px;margin-bottom:14px;box-shadow:0 6px 18px rgba(190,24,93,.1);display:flex;gap:16px}
+.ev .data{background:#fdf2f8;border-radius:12px;padding:10px 14px;text-align:center;min-width:60px}
+.ev .data b{display:block;font-size:24px;color:#be185d}
+.ev h3{margin-bottom:4px}
+.tagc{display:inline-block;background:#fce7f3;color:#be185d;border-radius:99px;padding:2px 10px;font-size:12px;margin-right:6px}
+footer{padding:20px;text-align:center;font-size:13px}
+footer a{color:#be185d}
+</style></head>
+<body>
+<header><h1>🚪 Open House Litoral</h1><p>Visitas e lançamentos deste fim de semana no litoral</p>
+<nav><a href="https://praia.digital">Praia Digital</a><a href="https://praia.digital/eventos-litoral">Eventos</a><a href="https://praia.digital/alerta-ofertas">Alerta de Ofertas</a><a href="https://praia.digital/apps">Todos os apps</a></nav></header>
+<div class="wrap">
+<div class="filtros" id="f"></div><div id="lista"></div>
+<p style="text-align:center;color:#9d174d">Quer anunciar seu open house? Fale no <a href="https://praia.digital/portal-corretores">Portal do Corretor</a>.</p>
+</div>
+<footer>Rede <a href="https://praia.digital">praia.digital</a> · <a href="https://praia.digital/match-praia">Match Praia</a> · <a href="https://praia.digital/mapa-inteligente">Mapa Inteligente</a> · <a href="https://praia.digital/tour-360">Tour 360</a></footer>
+<script>
+const eventos=[
+{d:'19',ds:'SÁB',t:'Open House — Cobertura vista mar',l:'Boqueirão, Santos',h:'10h–16h',tipo:'visita',p:'R$ 1,65 mi'},
+{d:'19',ds:'SÁB',t:'Lançamento Residencial Farol',l:'Canto do Forte, Praia Grande',h:'9h–18h',tipo:'lancamento',p:'a partir de R$ 289 mil'},
+{d:'20',ds:'DOM',t:'Open House — Casa 4 suítes com piscina',l:'Riviera, São Sebastião',h:'11h–15h',tipo:'visita',p:'R$ 2,4 mi'},
+{d:'20',ds:'DOM',t:'Feirão de imóveis de temporada',l:'Pitangueiras, Guarujá',h:'10h–17h',tipo:'feirao',p:'vários'},
+{d:'26',ds:'SÁB',t:'Open House — Studio mobiliado',l:'Enseada, Guarujá',h:'10h–14h',tipo:'visita',p:'R$ 420 mil'},
+{d:'27',ds:'DOM',t:'Lançamento condomínio clube',l:'Martim de Sá, Caraguatatuba',h:'9h–17h',tipo:'lancamento',p:'a partir de R$ 380 mil'}];
+const tipos=[['todos','Todos'],['visita','🚪 Visitas'],['lancamento','🚀 Lançamentos'],['feirao','🎪 Feirões']];
+let filtro='todos';
+f.innerHTML=tipos.map(t=>`<button class="${t[0]==='todos'?'on':''}" data-k="${t[0]}">${t[1]}</button>`).join('');
+f.querySelectorAll('button').forEach(b=>b.onclick=()=>{filtro=b.dataset.k;f.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));draw();});
+function draw(){lista.innerHTML=eventos.filter(e=>filtro==='todos'||e.tipo===filtro).map(e=>`<div class="ev"><div class="data"><b>${e.d}</b>${e.ds}<br>SET</div><div><h3>${e.t}</h3><span class="tagc">📍 ${e.l}</span><span class="tagc">🕐 ${e.h}</span><span class="tagc">💰 ${e.p}</span><br><small><a style="color:#be185d" href="https://praia.digital/tour-360">Ver tour virtual antes da visita →</a></small></div></div>`).join('');}
+draw();
+</script></body></html>
